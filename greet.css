@@ -1,0 +1,27 @@
+#InputBox {
+  float: right;
+  right: 50%;
+  width: 300px;
+  border: 25px solid blue;
+  padding: 25px;
+  margin: 25px;
+  position: relative;
+  background-color: aqua
+
+}
+
+#InputBox h2 {
+    color: black;
+    font-size: 4em;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    display: inline;
+}
+
+.enterName {
+  position: relative;
+	top: 0px;
+  left: 0px;
+
+}
