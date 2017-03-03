@@ -1,30 +1,100 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="greet.css">
-<title>Greeting</title>
-<link rel="stylesheet" type="text/css" href="greet.css">
+  <link rel="stylesheet" href="greet.css">
+  <link rel="stylesheet" type="text/css" href="greet.css">
+
+    <meta charset="utf-8">
+    <title>Greet in selected language</title>
 </head>
-<body>
+<body onload = "loadStats();">
 
-<div id="InputBox">
-	<h2>Greet Me</h2>
-	<p class="enterName">Please Enter Your Name</p>
-	<input type="text" id="input" >
-	<button onclick="greet()">GREET</button>
-	<p id="output"></p>
-	<p id="elementID"></p>
-	</div>
+    <div id="InputBox">
+        <input type="radio" id="eng" name="languages" value="english" checked="checked">English<br>
+        <input type="radio" id="zul" name="languages" value="zulu" >Zulu<br>
+        <input type="radio" id="xho" name="languages" value="xhosa" >Xhosa<br>
+        <input type="radio" id="afr" name="languages" value="afrikaans" >Afrikaans<br>
+        <p class="enterName">Please Enter Your Name</p>
+        <input type="text" id="input" required> ></input>
+        <button  type="button" id="countButton">GREET</button>
+        <button  type="button" id="clearButton">Clear Fields</button>
+        <button type="button" id="clearStorage">Clear Storage</button>
+        <p>Total amount of Greetings <a id="clicks" > 0 </a> times.</p>
 
-<script>
+        <p id="output"></p>
 
-    function greet (){
-			var x = document.getElementById("input").value;
-	    document.getElementById("output").innerHTML = "Hello, " + x;
-			document.getElementById("elementID").value = "";
-};
+    </div>
 
-</script>
+
+    <script>
+        document.getElementById("countButton").addEventListener("click", greet);
+        document.getElementById("clearButton").addEventListener("click", ClearFields);
+        document.getElementById("clearStorage").addEventListener("click", reset_counter);
+
+        var clicks = 0;
+
+        // you want to start clicks from the localStorage value if it's there
+        function loadStats (){
+          if (window.localStorage.getItem('clicks')) {
+            clicks = window.localStorage.getItem('clicks');
+            document.getElementById("clicks").innerHTML = clicks;
+
+       } else{
+          window.localStorage.setItem ('clicks',0);
+       } //checks if data has been saved before so Clicks value does not become null
+     }
+
+
+        function greet() {
+
+          var name = document.getElementById("input").value;
+
+
+          if (name.length == 0) {
+            document.getElementById("output").innerHTML = "Please Enter Name" + name;
+          }
+
+          if (document.getElementById("eng").checked && name.length > 0) {
+            document.getElementById("output").innerHTML = "Hello, " + name;
+            clicks ++;
+
+          }
+          else if (document.getElementById("zul").checked && name.length > 0){
+            document.getElementById("output").innerHTML = "Sawubona, " + name;
+            clicks ++;
+
+          }
+          else if (document.getElementById("xho").checked && name.length > 0)  {
+            document.getElementById("output").innerHTML = "Molo, " + name;
+            clicks ++;
+
+          }
+          else if (document.getElementById("afr").checked && name.length > 0)   {
+            document.getElementById("output").innerHTML = "Hallo, " + name;
+            clicks ++;
+
+          }
+
+          // store the new value of clicks in localStorage
+          window.localStorage.setItem("on_load_counter",clicks)
+
+          window.localStorage.setItem("clicks",clicks)
+          document.getElementById("clicks").innerHTML = clicks;
+        }
+
+        var stringInput = " ";
+        function ClearFields() {
+          document.getElementById("input").value = "";
+          document.getElementById("output").innerHTML = "" + name;
+          }
+
+          var reset = 0;
+          function reset_counter() {
+            window.localStorage.clear('on_load_counter');
+            document.getElementById("clicks").innerHTML = reset;
+          }
+
+      </script>
 
 </body>
 </html>
