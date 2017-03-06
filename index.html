@@ -15,13 +15,14 @@
         <input type="radio" id="xho" name="languages" value="xhosa" >Xhosa<br>
         <input type="radio" id="afr" name="languages" value="afrikaans" >Afrikaans<br>
         <p class="enterName">Please Enter Your Name</p>
-        <input type="text" id="input" required> ></input>
+        <input type="text"  id="input" required> ></input>
         <button  type="button" id="countButton">GREET</button>
         <button  type="button" id="clearButton">Clear Fields</button>
         <button type="button" id="clearStorage">Clear Storage</button>
         <p>Total amount of Greetings <a id="clicks" > 0 </a> times.</p>
 
         <p id="output"></p>
+        <p id="nameOutput"></p>
 
     </div>
 
@@ -32,6 +33,16 @@
         document.getElementById("clearStorage").addEventListener("click", reset_counter);
 
         var clicks = 0;
+        var usersGreeted = {};
+        if (window.localStorage.getItem['usersGreeted']){
+          usersGreeted = JSON.parse(window.localStorage.getItem['usersGreeted']);
+        }else{
+          window.localStorage.setItem ('usersGreeted',document.getElementById("input").value);
+
+        }
+
+
+
 
         // you want to start clicks from the localStorage value if it's there
         function loadStats (){
@@ -48,30 +59,57 @@
         function greet() {
 
           var name = document.getElementById("input").value;
+          var counterElem = document.getElementById('clicks');
+
+
+        //  if (usersGreeted[name] === undefined){
+        //    clicks ++;
+        //    document.getElementById("output").innerHTML = "Succesfully Added " + name;
+        //     counterElem.innerHTML = clicks;
+        //    usersGreeted[name] = 0;
+        //    localStorage['usersGreeted'] = JSON.stringify(usersGreeted);
+        // };
 
 
           if (name.length == 0) {
             document.getElementById("output").innerHTML = "Please Enter Name" + name;
+            clicks = clicks
           }
 
-          if (document.getElementById("eng").checked && name.length > 0) {
+          if (document.getElementById("eng").checked && name.length > 0 && usersGreeted[name] === undefined) {
             document.getElementById("output").innerHTML = "Hello, " + name;
             clicks ++;
+            document.getElementById("nameOutput").innerHTML =  name + "  can only be greeted ONCE " ;
+            counterElem.innerHTML = clicks;
+            usersGreeted[name] = 0;
+            localStorage['usersGreeted'] = JSON.stringify(usersGreeted);
 
           }
-          else if (document.getElementById("zul").checked && name.length > 0){
+          else if (document.getElementById("zul").checked && name.length > 0 && usersGreeted[name] === undefined) {
             document.getElementById("output").innerHTML = "Sawubona, " + name;
             clicks ++;
+            document.getElementById("nameOutput").innerHTML = name + "  can only be greeted ONCE " ;
+            counterElem.innerHTML = clicks;
+            usersGreeted[name] = 0;
+            localStorage['usersGreeted'] = JSON.stringify(usersGreeted);
 
           }
-          else if (document.getElementById("xho").checked && name.length > 0)  {
+          else if (document.getElementById("xho").checked && name.length > 0 && usersGreeted[name] === undefined)  {
             document.getElementById("output").innerHTML = "Molo, " + name;
             clicks ++;
+            document.getElementById("nameOutput").innerHTML = name + "  can only be greeted ONCE " ;
+            counterElem.innerHTML = clicks;
+            usersGreeted[name] = 0;
+            localStorage['usersGreeted'] = JSON.stringify(usersGreeted);
 
           }
-          else if (document.getElementById("afr").checked && name.length > 0)   {
+          else if (document.getElementById("afr").checked && name.length > 0 && usersGreeted[name] === undefined)   {
             document.getElementById("output").innerHTML = "Hallo, " + name;
             clicks ++;
+            document.getElementById("nameOutput").innerHTML = name + "  can only be greeted ONCE " ;
+            counterElem.innerHTML = clicks;
+            usersGreeted[name] = 0;
+            localStorage['usersGreeted'] = JSON.stringify(usersGreeted);
 
           }
 
@@ -86,12 +124,15 @@
         function ClearFields() {
           document.getElementById("input").value = "";
           document.getElementById("output").innerHTML = "" + name;
+          document.getElementById("nameOutput").innerHTML = "" + name;
+
           }
 
-          var reset = 0;
+
           function reset_counter() {
-            window.localStorage.clear('on_load_counter');
-            document.getElementById("clicks").innerHTML = reset;
+            window.localStorage.clear();
+            clicks = 0;
+            document.getElementById("clicks").innerHTML = clicks;
           }
 
       </script>
