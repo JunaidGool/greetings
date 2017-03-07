@@ -73,13 +73,13 @@
 
           if (name.length == 0) {
             document.getElementById("output").innerHTML = "Please Enter Name" + name;
+            document.getElementById("nameOutput").innerHTML = "Field cannot be blank " ;
             clicks = clicks
           }
 
           if (document.getElementById("eng").checked && name.length > 0 && usersGreeted[name] === undefined) {
             document.getElementById("output").innerHTML = "Hello, " + name;
             clicks ++;
-            document.getElementById("nameOutput").innerHTML =  name + "  can only be greeted ONCE " ;
             counterElem.innerHTML = clicks;
             usersGreeted[name] = 0;
             localStorage['usersGreeted'] = JSON.stringify(usersGreeted);
@@ -88,7 +88,6 @@
           else if (document.getElementById("zul").checked && name.length > 0 && usersGreeted[name] === undefined) {
             document.getElementById("output").innerHTML = "Sawubona, " + name;
             clicks ++;
-            document.getElementById("nameOutput").innerHTML = name + "  can only be greeted ONCE " ;
             counterElem.innerHTML = clicks;
             usersGreeted[name] = 0;
             localStorage['usersGreeted'] = JSON.stringify(usersGreeted);
@@ -97,7 +96,6 @@
           else if (document.getElementById("xho").checked && name.length > 0 && usersGreeted[name] === undefined)  {
             document.getElementById("output").innerHTML = "Molo, " + name;
             clicks ++;
-            document.getElementById("nameOutput").innerHTML = name + "  can only be greeted ONCE " ;
             counterElem.innerHTML = clicks;
             usersGreeted[name] = 0;
             localStorage['usersGreeted'] = JSON.stringify(usersGreeted);
@@ -106,7 +104,6 @@
           else if (document.getElementById("afr").checked && name.length > 0 && usersGreeted[name] === undefined)   {
             document.getElementById("output").innerHTML = "Hallo, " + name;
             clicks ++;
-            document.getElementById("nameOutput").innerHTML = name + "  can only be greeted ONCE " ;
             counterElem.innerHTML = clicks;
             usersGreeted[name] = 0;
             localStorage['usersGreeted'] = JSON.stringify(usersGreeted);
@@ -118,6 +115,7 @@
 
           window.localStorage.setItem("clicks",clicks)
           document.getElementById("clicks").innerHTML = clicks;
+          document.getElementById("nameOutput").innerHTML = "The last greeting has been counted, new greeting required " ;
         }
 
         var stringInput = " ";
