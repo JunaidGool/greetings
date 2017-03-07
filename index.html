@@ -73,8 +73,8 @@
 
           if (name.length == 0) {
             document.getElementById("output").innerHTML = "Please Enter Name" + name;
-            document.getElementById("nameOutput").innerHTML = "Field cannot be blank " ;
             clicks = clicks
+            document.getElementById("nameOutput").innerHTML = "Field cannot be blank " ;
           }
 
           if (document.getElementById("eng").checked && name.length > 0 && usersGreeted[name] === undefined) {
@@ -83,6 +83,7 @@
             counterElem.innerHTML = clicks;
             usersGreeted[name] = 0;
             localStorage['usersGreeted'] = JSON.stringify(usersGreeted);
+            document.getElementById("nameOutput").innerHTML = "The last greeting has been counted, new greeting required " ;
 
           }
           else if (document.getElementById("zul").checked && name.length > 0 && usersGreeted[name] === undefined) {
@@ -91,6 +92,7 @@
             counterElem.innerHTML = clicks;
             usersGreeted[name] = 0;
             localStorage['usersGreeted'] = JSON.stringify(usersGreeted);
+            document.getElementById("nameOutput").innerHTML = "The last greeting has been counted, new greeting required " ;
 
           }
           else if (document.getElementById("xho").checked && name.length > 0 && usersGreeted[name] === undefined)  {
@@ -99,6 +101,7 @@
             counterElem.innerHTML = clicks;
             usersGreeted[name] = 0;
             localStorage['usersGreeted'] = JSON.stringify(usersGreeted);
+            document.getElementById("nameOutput").innerHTML = "The last greeting has been counted, new greeting required " ;
 
           }
           else if (document.getElementById("afr").checked && name.length > 0 && usersGreeted[name] === undefined)   {
@@ -107,6 +110,7 @@
             counterElem.innerHTML = clicks;
             usersGreeted[name] = 0;
             localStorage['usersGreeted'] = JSON.stringify(usersGreeted);
+            document.getElementById("nameOutput").innerHTML = "The last greeting has been counted, new greeting required " ;
 
           }
 
@@ -115,7 +119,7 @@
 
           window.localStorage.setItem("clicks",clicks)
           document.getElementById("clicks").innerHTML = clicks;
-          document.getElementById("nameOutput").innerHTML = "The last greeting has been counted, new greeting required " ;
+
         }
 
         var stringInput = " ";
