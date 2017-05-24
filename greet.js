@@ -80,3 +80,5 @@ function ClearFields() {
     clicks = 0;
     document.getElementById("clicks").innerHTML = clicks;
   }
+
+delete this
