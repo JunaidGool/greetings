@@ -1,7 +1,7 @@
 var namesGreeted = [];
+var countGreet = 0;
 
 function counter (name){
-  var countGreet = 0;
   if (name){
     namesGreeted.push({name: name});
     countGreet = namesGreeted.length;
