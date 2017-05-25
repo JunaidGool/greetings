@@ -1,13 +1,13 @@
-function newGreeting (greet, name) {
+function newGreeting(greet, name) {
   var greeting = "";
 
-  if (greet === 'eng'){
+  if (greet === 'eng') {
     greeting = ("Hello, " + name);
-  } else if (greet === 'zul'){
+  } else if (greet === 'zul') {
     greeting = ("Sawubona, " + name);
-  } else if (greet === 'xho'){
+  } else if (greet === 'xho') {
     greeting = ("Molo, " + name);
-  } else if (greet === 'afr'){
+  } else if (greet === 'afr') {
     greeting = ("Halo, " + name);
   } else {
     greeting = ("Invalid");
