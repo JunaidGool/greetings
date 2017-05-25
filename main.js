@@ -50,3 +50,8 @@ document.getElementById("clearButton").addEventListener("click", function(){
   // clear fields
     var clear = ClearFields();
 });
+
+document.getElementById("clearStorage").addEventListener("click", function(){
+  // clear localStorage
+  var clearLocal = clearStorage();
+});
